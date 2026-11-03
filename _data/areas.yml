@@ -1,0 +1,11 @@
+- title: GPU bioinformatics
+  text: Moving whole-genome pipelines onto GPUs, from Parabricks variant calling across hundreds of exomes to probabilistic models like TITAN. The biggest win is rarely a faster single run. It is running dozens of starting points in parallel so the model stops getting stuck in poor solutions.
+
+- title: Copy number and ctDNA algorithms
+  text: Extending ichorCNA and TITAN to work across many samples at once and to behave on low tumor fraction cell-free DNA, with better initialization, denser allele-frequency panels and sensible bin sizes.
+
+- title: Computational biology
+  text: Structural variant calling, mutational signatures, and models that connect cell-free DNA methylation to gene expression. Most of it starts with making the BAMs, the references and the metadata trustworthy.
+
+- title: Agentic systems
+  text: Agents that do the repetitive expert work. A vision-language agent that curates copy number solutions in minutes instead of hours, and natural language tools for querying a large whole-genome database without sending data off the cluster.

@@ -1,0 +1,12 @@
+{% assign p = site.data.profile %}
+<footer class="site-foot">
+  <div class="wrap foot-row">
+    <p>&copy; {{ 'now' | date: "%Y" }} {{ p.name }}</p>
+    <p class="foot-links">
+      {% if p.links.github != "" %}<a href="{{ p.links.github }}" rel="me">GitHub</a>{% endif %}
+      {% if p.links.linkedin != "" %}<a href="{{ p.links.linkedin }}" rel="me">LinkedIn</a>{% endif %}
+      {% if p.links.x != "" %}<a href="{{ p.links.x }}" rel="me">X</a>{% endif %}
+      <a href="{{ '/feed.xml' | relative_url }}">RSS</a>
+    </p>
+  </div>
+</footer>

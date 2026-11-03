@@ -1,0 +1,46 @@
+# One entry per project. Newest first. `links` is optional: [{label: Code, url: https://...}]
+# Check each entry is fine to make public before you publish.
+
+- title: TITAN curation agent
+  area: Agentic systems
+  status: In use
+  summary: A vision-language agent that reviews TITAN copy number solutions and recommends purity and ploidy, cutting manual curation from about 40 hours to 15 minutes. The current version scores two models against the same curation rubric and compares their picks with TITAN's own optimum.
+  links:
+    - {label: Code, url: https://github.com/GavinHaLab/titancna-curation-agent}
+
+- title: Multi-sample ichorCNA
+  area: Copy number algorithms
+  status: In development
+  summary: Extending ichorCNA so that several samples from one patient are modeled together, rather than one at a time.
+  links: []
+
+- title: TITAN on GPU
+  area: GPU bioinformatics
+  status: Exploring
+  summary: Porting TITAN's copy number model to GPUs with parallel multi-start EM (50 to 100 initializations), plus fixes aimed at cell-free DNA such as low-purity starts and ichorCNA warm starts.
+  links: []
+
+- title: Genome database query tool
+  page: /projects/genome-query/
+  area: Agentic systems
+  status: In development
+  summary: An offline natural language interface to a whole-genome database of more than 200 samples. Text-to-SQL over a normalized Postgres schema, fed by parsers for ichorCNA, TITAN, SvABA and HaplotypeCaller output.
+  links: []
+
+- title: BAM slimming pipeline
+  area: GPU bioinformatics
+  status: Done
+  summary: A Nextflow pipeline that strips secondary reads and applies quantized base recalibration, shrinking BAMs across about 170 samples from roughly 88 GB to 38 GB.
+  links: []
+
+- title: Parabricks exome pipeline
+  area: GPU bioinformatics
+  status: Done
+  summary: GPU-accelerated HaplotypeCaller across 133 exomes on a 4-GPU node, using one Nextflow process per GPU to avoid contention.
+  links: []
+
+- title: Methylation-to-expression models
+  area: Computational biology
+  status: In development
+  summary: Pipelines for predicting gene expression from cell-free DNA methylation on 450k probes, built to run in parallel across four GPUs, alongside a methylation foundation model.
+  links: []

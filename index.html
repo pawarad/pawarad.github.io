@@ -1,0 +1,145 @@
+---
+layout: default
+---
+{% assign p = site.data.profile %}
+
+<section class="hero">
+  <div class="wrap">
+    <h1 class="name">{{ p.name }}</h1>
+    <p class="role">{{ p.role }}, <a href="{{ p.org_url }}">{{ p.org }}</a></p>
+    <p class="tagline">{{ p.tagline }}</p>
+  </div>
+  <div class="genome wrap-wide">
+    <canvas id="genome" height="240" role="img"
+      aria-label="A simulated genome-wide copy number profile from chromosome 1 to X. Points are colored teal for neutral, red for gain and blue for loss."></canvas>
+    <div class="genome-meta">
+      <p id="genome-readout" class="readout">Simulated cell-free DNA copy number profile.</p>
+      <button id="genome-new" class="btn" type="button">Draw another sample</button>
+    </div>
+  </div>
+</section>
+
+<section id="about" class="block wrap">
+  <h2>About</h2>
+  <div class="prose">
+    {% for para in p.bio %}<p>{{ para }}</p>{% endfor %}
+    <p class="links">
+      {% if p.links.cv != "" %}<a href="{{ p.links.cv }}">CV</a>{% endif %}
+      {% if p.links.github != "" %}<a href="{{ p.links.github }}" rel="me">GitHub</a>{% endif %}
+      {% if p.links.scholar != "" %}<a href="{{ p.links.scholar }}" rel="me">Google Scholar</a>{% endif %}
+      {% if p.links.linkedin != "" %}<a href="{{ p.links.linkedin }}" rel="me">LinkedIn</a>{% endif %}
+      {% if p.links.x != "" %}<a href="{{ p.links.x }}" rel="me">X</a>{% endif %}
+      {% if p.links.email != "" %}<a href="mailto:{{ p.links.email }}">Email</a>{% endif %}
+    </p>
+  </div>
+</section>
+
+<section id="work" class="block wrap">
+  <h2>What I work on</h2>
+  <div class="areas">
+    {% for a in site.data.areas %}
+    <div class="area">
+      <h3>{{ a.title }}</h3>
+      <p>{{ a.text }}</p>
+    </div>
+    {% endfor %}
+  </div>
+</section>
+
+<section id="projects" class="block wrap">
+  <h2>Projects</h2>
+  <ul class="rows">
+    {% for pr in site.data.projects %}
+    <li class="row">
+      <div class="row-main">
+        <h3>{% if pr.page %}<a href="{{ pr.page | relative_url }}">{{ pr.title }}</a>{% else %}{{ pr.title }}{% endif %}</h3>
+        <p>{{ pr.summary }}</p>
+        {% if pr.links.size > 0 %}<p class="links">{% for l in pr.links %}<a href="{{ l.url }}">{{ l.label }}</a>{% endfor %}</p>{% endif %}
+      </div>
+      <p class="row-side">{{ pr.area }}<br><span class="status">{{ pr.status }}</span></p>
+    </li>
+    {% endfor %}
+  </ul>
+</section>
+
+<section id="publications" class="block wrap">
+  <h2>Publications and talks</h2>
+  {% if site.data.publications.size > 0 %}
+  <ul class="rows">
+    {% for pub in site.data.publications %}
+    <li class="row">
+      <div class="row-main">
+        <h3>{{ pub.title }}</h3>
+        <p>{{ pub.authors | markdownify | remove: '<p>' | remove: '</p>' }}</p>
+        <p class="venue">{{ pub.venue }}, {{ pub.year }}</p>
+        {% if pub.links.size > 0 %}<p class="links">{% for l in pub.links %}<a href="{{ l.url }}">{{ l.label }}</a>{% endfor %}</p>{% endif %}
+      </div>
+    </li>
+    {% endfor %}
+  </ul>
+  {% elsif p.links.scholar != "" %}
+  <p class="prose-note">Papers are listed on <a href="{{ p.links.scholar }}">Google Scholar</a>.</p>
+  {% endif %}
+
+  {% if site.data.talks.size > 0 %}
+  <h3 class="sub">Talks and posters</h3>
+  <ul class="rows">
+    {% for t in site.data.talks %}
+    <li class="row">
+      <div class="row-main">
+        <h3>{{ t.title }}</h3>
+        <p class="venue">{{ t.venue }}, {{ t.year }}</p>
+        {% if t.links.size > 0 %}<p class="links">{% for l in t.links %}<a href="{{ l.url }}">{{ l.label }}</a>{% endfor %}</p>{% endif %}
+      </div>
+    </li>
+    {% endfor %}
+  </ul>
+  {% endif %}
+</section>
+
+<section id="writing" class="block wrap">
+  <h2>Recent writing</h2>
+  {% if site.posts.size > 0 %}
+  <ul class="rows">
+    {% for post in site.posts limit: 3 %}
+    <li class="row">
+      <div class="row-main">
+        <h3><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h3>
+        <p>{{ post.description | default: post.excerpt | strip_html | truncatewords: 30 }}</p>
+      </div>
+      <p class="row-side"><time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%b %-d, %Y" }}</time></p>
+    </li>
+    {% endfor %}
+  </ul>
+  <p><a href="{{ '/blog/' | relative_url }}">All writing</a></p>
+  {% else %}
+  <p class="prose-note">The first post is on its way.</p>
+  {% endif %}
+</section>
+
+<section id="news" class="block wrap">
+  <h2>News</h2>
+  <ul class="rows compact">
+    {% for n in site.data.news %}
+    <li class="row">
+      <p class="row-side">{{ n.date }}</p>
+      <div class="row-main"><p>{{ n.text }}</p></div>
+    </li>
+    {% endfor %}
+  </ul>
+</section>
+
+<section id="experience" class="block wrap">
+  <h2>Experience and education</h2>
+  <ul class="rows compact">
+    {% for e in site.data.experience %}
+    <li class="row">
+      <div class="row-main">
+        <h3>{{ e.role }}</h3>
+        <p>{{ e.place }}{% if e.years != "" %}, {{ e.years }}{% endif %}</p>
+        {% if e.note != "" %}<p class="venue">{{ e.note }}</p>{% endif %}
+      </div>
+    </li>
+    {% endfor %}
+  </ul>
+</section>

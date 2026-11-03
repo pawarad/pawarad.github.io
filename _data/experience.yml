@@ -1,0 +1,16 @@
+# Newest first. `years` is optional.
+- role: Bioinformatics Analyst II
+  place: Gavin Ha Lab, Fred Hutchinson Cancer Center
+  years: ""
+  note: Cancer genomics, GPU pipelines, copy number algorithms and agentic analysis tools.
+
+# Add your job title for NextRNA in `role`, plus the years, when you have them.
+- role: NextRNA Therapeutics
+  place: RNA drug discovery
+  years: ""
+  note: Compound library reduction with RDKit and analysis of 3D RNA and protein structures.
+
+- role: MS, Applied Mathematics
+  place: Northeastern University
+  years: ""
+  note: ""

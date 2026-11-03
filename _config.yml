@@ -1,0 +1,33 @@
+# Site settings. Edit `url` first: https://<your-github-username>.github.io
+title: Aditya Pawar
+description: Cancer genomics, GPU bioinformatics and agentic systems. Notes and projects from the Ha Lab at Fred Hutch.
+url: "https://pawarad.github.io"
+baseurl: ""            # keep empty for a <username>.github.io repository
+lang: en
+
+# Social card used when a link is shared on LinkedIn / X (PNG, 1200x630)
+image: /assets/img/og.png
+
+# Uncomment once you have the accounts (used by the SEO tags)
+# twitter:
+#   username: your_x_handle
+# social:
+#   name: Aditya Pawar
+#   links:
+#     - https://www.linkedin.com/in/your-handle
+
+markdown: kramdown
+highlighter: rouge
+permalink: /blog/:title/
+timezone: America/New_York
+
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+
+exclude:
+  - README.md
+  - Gemfile
+  - Gemfile.lock
+  - vendor
+  - node_modules

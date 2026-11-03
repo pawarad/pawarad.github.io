@@ -1,0 +1,21 @@
+name: Aditya Pawar
+role: Bioinformatics Analyst II
+org: Gavin Ha Lab, Fred Hutchinson Cancer Center
+org_url: https://www.fredhutch.org/
+location: Boston area
+
+tagline: I build the algorithms, GPU pipelines and agents that turn cell-free DNA into answers about cancer.
+
+bio:
+  - I work at the Gavin Ha Lab at Fred Hutch, where I develop methods for reading cancer biology out of whole-genome sequencing, mostly from cell-free DNA. My days run between algorithm work (copy number and tumor fraction across many samples), the compute that makes it practical (GPU pipelines on the lab cluster), and, more and more, agentic systems that take over the slow, manual parts of analysis.
+  - I have a master's in applied mathematics from Northeastern University and more than seven years of experience across cancer genomics, machine learning and computational biology. Before Fred Hutch I worked on RNA drug discovery at NextRNA Therapeutics, using cheminformatics and 3D structure data.
+  - This site is where I keep short write-ups, new implementations and what I learn along the way.
+
+# Leave a link empty to hide it.
+links:
+  github: "https://github.com/pawarad"
+  linkedin: ""      # e.g. https://www.linkedin.com/in/your-handle
+  x: ""             # e.g. https://x.com/your_handle
+  scholar: ""       # your Google Scholar profile
+  cv: ""            # link or /assets/cv.pdf
+  email: ""         # public contact address, if you want one shown

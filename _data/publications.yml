@@ -1,0 +1,13 @@
+# Papers and preprints, newest first. Example entry:
+#
+# - title: Paper title
+#   authors: "A. Pawar, B. Coauthor, G. Ha"   # wrap your own name in ** ** to bold it
+#   venue: Journal or conference
+#   year: 2026
+#   links:
+#     - {label: Paper, url: https://...}
+#     - {label: Preprint, url: https://...}
+#     - {label: Code, url: https://...}
+#
+# Left empty on purpose: add your real papers here.
+[]

@@ -1,0 +1,17 @@
+---
+layout: default
+---
+<article class="post wrap">
+  <header class="post-head">
+    <p class="post-date"><time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%B %-d, %Y" }}</time></p>
+    <h1>{{ page.title }}</h1>
+    {% if page.description %}<p class="post-lede">{{ page.description }}</p>{% endif %}
+  </header>
+  <div class="prose">
+    {{ content }}
+  </div>
+  <footer class="post-foot">
+    {% if page.tags.size > 0 %}<p class="tags">Topics: {{ page.tags | join: ", " }}</p>{% endif %}
+    <p><a href="{{ '/blog/' | relative_url }}">All writing</a></p>
+  </footer>
+</article>

@@ -1,0 +1,26 @@
+---
+layout: default
+title: Writing
+description: Short write-ups on cancer genomics, GPU bioinformatics and agentic systems.
+permalink: /blog/
+---
+<section class="block wrap page-top">
+  <h1 class="page-title">Writing</h1>
+  <p class="lede">Short findings, new implementations and notes from the work. <a href="{{ '/feed.xml' | relative_url }}">Subscribe by RSS</a>.</p>
+  {% if site.posts.size > 0 %}
+  <ul class="rows">
+    {% for post in site.posts %}
+    <li class="row">
+      <div class="row-main">
+        <h2 class="row-title"><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h2>
+        <p>{{ post.description | default: post.excerpt | strip_html | truncatewords: 40 }}</p>
+        {% if post.tags.size > 0 %}<p class="venue">{{ post.tags | join: ", " }}</p>{% endif %}
+      </div>
+      <p class="row-side"><time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%b %-d, %Y" }}</time></p>
+    </li>
+    {% endfor %}
+  </ul>
+  {% else %}
+  <p class="prose-note">No posts yet. Add a Markdown file to <code>_posts</code> to publish the first one.</p>
+  {% endif %}
+</section>

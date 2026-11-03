@@ -1,0 +1,50 @@
+---
+layout: default
+title: Asking a genome database questions in plain English
+description: An offline tool that lets researchers and clinicians query a large whole-genome sequencing database in natural language, with the data staying on the cluster.
+permalink: /projects/genome-query/
+---
+<article class="post wrap">
+  <header class="post-head">
+    <p class="post-date">Project</p>
+    <h1>Asking a genome database questions in plain English</h1>
+    <p class="post-lede">A web app that turns a question into a database query, runs it on whole-genome data that never leaves our servers, and shows the answer with where it came from.</p>
+  </header>
+
+  <div class="prose">
+    <h2>The problem</h2>
+    <p>A whole-genome sequencing study produces a lot of results per sample: copy number, tumor fraction, structural variants, small variants. They sit in separate files from separate tools. Answering a simple question such as "which samples have a gain on chromosome 8q and a high tumor fraction?" usually means asking a bioinformatician to write a script. The wait is days, and the person who knows the biology is not the person who can query the data.</p>
+
+    <h2>How it works</h2>
+    <ol class="flow">
+      <li><strong>Pipeline outputs are loaded once.</strong> Parsers read results from tools such as ichorCNA, TITAN, SvABA and HaplotypeCaller and store them in a structured, normalized Postgres database.</li>
+      <li><strong>You ask in plain English.</strong> No query language, no file paths.</li>
+      <li><strong>The model sees the schema, not the data.</strong> The relevant table and column descriptions are retrieved and given to a language model, which writes a database query.</li>
+      <li><strong>The query is checked, then run.</strong> It is read-only, and it runs on the local database.</li>
+      <li><strong>You get the answer and its source.</strong> Results come back as a table, with the query shown so it can be checked.</li>
+    </ol>
+    <p>We chose a database query over embedding the data into a vector store. Genomic results are numbers, coordinates and categories, and questions about them need exact filters and counts. A database returns those exactly. Similarity search over text tends to return plausible but wrong answers.</p>
+    <p>The whole system runs offline, on our own infrastructure. Sequence data and patient-level results are never sent to an outside service.</p>
+
+    <h2>An example</h2>
+    <p>The question below is illustrative, not real data.</p>
+    <blockquote>
+      <p><strong>Ask:</strong> Which samples have a gain on chromosome 8q and a tumor fraction above 0.2?</p>
+      <p><strong>The tool:</strong> writes a query joining the copy number and tumor fraction tables, runs it, and returns the matching sample list with the query attached.</p>
+    </blockquote>
+
+    <h2>Why it is useful in a clinical research setting</h2>
+    <ul>
+      <li><strong>Faster questions.</strong> Clinicians and biologists can explore a cohort directly, so a question that took a request and a wait takes a minute.</li>
+      <li><strong>Consistent definitions.</strong> Every sample is stored the same way, so a "high tumor fraction" means the same thing across studies.</li>
+      <li><strong>Checkable answers.</strong> Each result shows the exact query behind it, so an analyst can confirm it rather than trust it.</li>
+      <li><strong>Privacy by design.</strong> The data stays inside the institution's network, which is the setting where patient genomic data has to stay.</li>
+      <li><strong>Frees up analysts.</strong> Routine cohort questions stop competing with the method development that needs a bioinformatician.</li>
+    </ul>
+
+    <p class="prose-note">This page describes the design. It contains no patient data, sample identifiers or internal paths.</p>
+  </div>
+  <footer class="post-foot">
+    <p><a href="{{ '/' | relative_url }}#projects">All projects</a></p>
+  </footer>
+</article>
