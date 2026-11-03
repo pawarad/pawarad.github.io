@@ -1,12 +1,25 @@
 # One entry per project. Newest first. `links` is optional: [{label: Code, url: https://...}]
 # Check each entry is fine to make public before you publish.
 
+- title: Lab research assistant
+  page: /projects/lab-assistant/
+  area: Agentic systems
+  status: In use in the lab
+  summary: A web app where researchers ask questions of a cancer genomics cohort in plain English. Numbers come only from reviewed database queries, every answer shows its source, and an offline model on the institution's own GPU handles routine questions.
+  links: []
+
 - title: TITAN curation agent
   area: Agentic systems
   status: In use
   summary: A vision-language agent that reviews TITAN copy number solutions and recommends purity and ploidy, cutting manual curation from about 40 hours to 15 minutes. The current version scores two models against the same curation rubric and compares their picks with TITAN's own optimum.
   links:
     - {label: Code, url: https://github.com/GavinHaLab/titancna-curation-agent}
+
+- title: Lab pipelines on Nextflow and GPUs
+  area: GPU bioinformatics
+  status: In use
+  summary: Moving the lab's pipelines into Nextflow so they run the same way every time, and building new ones for L40S GPUs with Parabricks.
+  links: []
 
 - title: Multi-sample ichorCNA
   area: Copy number algorithms
@@ -18,25 +31,6 @@
   area: GPU bioinformatics
   status: Exploring
   summary: Porting TITAN's copy number model to GPUs with parallel multi-start EM (50 to 100 initializations), plus fixes aimed at cell-free DNA such as low-purity starts and ichorCNA warm starts.
-  links: []
-
-- title: Lab research assistant
-  page: /projects/lab-assistant/
-  area: Agentic systems
-  status: In use in the lab
-  summary: A web app where researchers ask questions of a cancer genomics cohort in plain English. Numbers come only from reviewed database queries, every answer shows its source, and an offline model on the institution's own GPU handles routine questions.
-  links: []
-
-- title: BAM slimming pipeline
-  area: GPU bioinformatics
-  status: Done
-  summary: A Nextflow pipeline that strips secondary reads and applies quantized base recalibration, shrinking BAMs across about 170 samples from roughly 88 GB to 38 GB.
-  links: []
-
-- title: Parabricks exome pipeline
-  area: GPU bioinformatics
-  status: Done
-  summary: GPU-accelerated HaplotypeCaller across 133 exomes on a 4-GPU node, using one Nextflow process per GPU to avoid contention.
   links: []
 
 - title: Methylation-to-expression models

@@ -1,21 +1,21 @@
 name: Aditya Pawar
 role: Data Scientist
 org: Gavin Ha Lab, Fred Hutchinson Cancer Center
-org_url: https://www.fredhutch.org/
+org_url: https://gavinhalab.github.io/
 location: Boston area
 
-tagline: I build the algorithms, GPU pipelines and agents that turn cell-free DNA into answers about cancer.
+tagline: I build production agentic AI for cancer genomics that researchers use every day, on top of the algorithms and GPU pipelines that feed it.
 
 bio:
-  - I work at the Gavin Ha Lab at Fred Hutch, where I develop methods for reading cancer biology out of whole-genome sequencing, mostly from cell-free DNA. My days run between algorithm work (copy number and tumor fraction across many samples), the compute that makes it practical (GPU pipelines on the lab cluster), and, more and more, agentic systems that take over the slow, manual parts of analysis.
-  - I have a master's in applied mathematics from Northeastern University and more than seven years of experience across cancer genomics, machine learning and computational biology. Before Fred Hutch I worked on RNA drug discovery at NextRNA Therapeutics, using cheminformatics and 3D structure data.
-  - This site is where I keep short write-ups, new implementations and what I learn along the way.
+  - I am a data scientist at the Gavin Ha Lab at Fred Hutch. I build AI assistants and agents for cancer genomics that lab researchers use on real cohort data, along with the copy number algorithms and GPU pipelines underneath them. Most AI demos stop at the demo. My focus is the production end: systems that show their sources, check every number, and run inside clinical research protocols.
+  - I have more than eight years of experience across academia and industry, from protein machine learning at MIT to drug discovery at NextRNA Therapeutics, variant analysis at Memorial Sloan Kettering and cancer genomics at Fred Hutch. My master's in applied mathematics is from Northeastern University.
+  - The mix is deliberate. Applied mathematics lets me understand why a model behaves as it does, machine learning lets me build it, bioinformatics tells me what the data means, and engineering gets it running for real users. This site is where I write up the work.
 
 # Leave a link empty to hide it.
 links:
   github: "https://github.com/pawarad"
   linkedin: ""      # e.g. https://www.linkedin.com/in/your-handle
   x: ""             # e.g. https://x.com/your_handle
-  scholar: ""       # your Google Scholar profile
+  scholar: "https://scholar.google.com/citations?user=99TMfs0AAAAJ&hl=en"
   cv: ""            # link or /assets/cv.pdf
   email: ""         # public contact address, if you want one shown

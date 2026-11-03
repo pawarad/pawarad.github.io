@@ -1,6 +1,6 @@
 # Site settings. Edit `url` first: https://<your-github-username>.github.io
 title: Aditya Pawar
-description: Cancer genomics, GPU bioinformatics and agentic systems. Notes and projects from the Ha Lab at Fred Hutch.
+description: Production agentic AI, algorithms and GPU pipelines for cancer genomics. Data scientist at the Gavin Ha Lab, Fred Hutch.
 url: "https://pawarad.github.io"
 baseurl: ""            # keep empty for a <username>.github.io repository
 lang: en

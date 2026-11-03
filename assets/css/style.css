@@ -62,7 +62,7 @@ a:hover { color: var(--link-hover); }
   margin: 0 0 1rem;
 }
 .role { font-family: var(--head-font); font-size: 1.15rem; margin: 0 0 0.75rem; color: var(--muted); }
-.tagline { font-size: clamp(1.2rem, 2.4vw, 1.6rem); line-height: 1.4; max-width: 36ch; margin: 0 0 2rem; }
+.tagline { font-size: clamp(1.2rem, 2.4vw, 1.6rem); line-height: 1.4; max-width: 46ch; margin: 0 0 2rem; }
 
 .genome { margin-top: 0.5rem; }
 #genome { display: block; width: 100%; height: 240px; }
@@ -192,3 +192,11 @@ pre { overflow-x: auto; padding: 1rem; background: var(--rule); border-radius: 6
     content: ""; position: absolute; left: 50%; bottom: -0.75rem; width: 2px; height: 0.75rem; margin-left: -1px; background: var(--muted);
   }
 }
+
+/* Skills */
+.skills { margin: 0; }
+.skill { display: grid; gap: 0.1rem 2rem; padding: 0.8rem 0; border-top: 1px solid var(--rule); }
+.skill:first-child { border-top: 0; padding-top: 0; }
+.skill dt { font-family: var(--head-font); font-weight: 700; font-size: 1rem; }
+.skill dd { margin: 0; color: var(--muted); font-size: 0.97rem; }
+@media (min-width: 46rem) { .skill { grid-template-columns: 14rem 1fr; } }

@@ -1,0 +1,14 @@
+- group: Data science and machine learning
+  items: Python, R, SQL, PyTorch, TensorFlow, XGBoost, survival analysis, transformers and foundation models, graph neural networks, fine-tuning
+
+- group: Agentic AI and LLM systems
+  items: LLM agents with tool use, retrieval-augmented generation, vision-language models, offline and hosted models, answer validation and audit logging
+
+- group: Bioinformatics and genomics
+  items: Whole-genome and exome analysis, copy number and structural variants, cell-free DNA, methylation, Nextflow, Snakemake, Parabricks, HPC and SLURM
+
+- group: Applied mathematics
+  items: Probabilistic modeling and EM, statistics, numerical methods, MS in Applied Mathematics from Northeastern University
+
+- group: Engineering
+  items: PostgreSQL, DuckDB, Docker, AWS, CI/CD, MLflow, GPU computing with CUDA, Streamlit and Flask

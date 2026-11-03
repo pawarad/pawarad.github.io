@@ -34,6 +34,18 @@ layout: default
   </div>
 </section>
 
+<section id="skills" class="block wrap">
+  <h2>Skills</h2>
+  <dl class="skills">
+    {% for g in site.data.skills %}
+    <div class="skill">
+      <dt>{{ g.group }}</dt>
+      <dd>{{ g.items }}</dd>
+    </div>
+    {% endfor %}
+  </dl>
+</section>
+
 <section id="work" class="block wrap">
   <h2>What I work on</h2>
   <div class="areas">
