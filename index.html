@@ -82,7 +82,7 @@ layout: default
     <li class="row">
       <div class="row-main">
         <h3>{{ pub.title }}</h3>
-        <p>{{ pub.authors | markdownify | remove: '<p>' | remove: '</p>' }}</p>
+        {% if pub.authors != "" %}<p>{{ pub.authors | markdownify | remove: '<p>' | remove: '</p>' }}</p>{% endif %}
         <p class="venue">{{ pub.venue }}, {{ pub.year }}</p>
         {% if pub.links.size > 0 %}<p class="links">{% for l in pub.links %}<a href="{{ l.url }}">{{ l.label }}</a>{% endfor %}</p>{% endif %}
       </div>
