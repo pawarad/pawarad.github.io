@@ -8,4 +8,4 @@
   text: Structural variant calling, mutational signatures, and models that connect cell-free DNA methylation to gene expression. Most of it starts with making the BAMs, the references and the metadata trustworthy.
 
 - title: Agentic systems
-  text: Agents that do the repetitive expert work. A vision-language agent that curates copy number solutions in minutes instead of hours, and natural language tools for querying a large whole-genome database without sending data off the cluster.
+  text: Agents that do the repetitive expert work. A vision-language agent that curates copy number solutions in minutes instead of hours, and a web assistant that answers questions about a patient cohort in plain English, with every number coming from a reviewed query.

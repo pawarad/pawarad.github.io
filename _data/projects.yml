@@ -20,11 +20,11 @@
   summary: Porting TITAN's copy number model to GPUs with parallel multi-start EM (50 to 100 initializations), plus fixes aimed at cell-free DNA such as low-purity starts and ichorCNA warm starts.
   links: []
 
-- title: Genome database query tool
-  page: /projects/genome-query/
+- title: Lab research assistant
+  page: /projects/lab-assistant/
   area: Agentic systems
-  status: In development
-  summary: An offline natural language interface to a whole-genome database of more than 200 samples. Text-to-SQL over a normalized Postgres schema, fed by parsers for ichorCNA, TITAN, SvABA and HaplotypeCaller output.
+  status: In use in the lab
+  summary: A web app where researchers ask questions of a cancer genomics cohort in plain English. Numbers come only from reviewed database queries, every answer shows its source, and an offline model on the institution's own GPU handles routine questions.
   links: []
 
 - title: BAM slimming pipeline

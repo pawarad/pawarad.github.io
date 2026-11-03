@@ -150,3 +150,45 @@ pre { overflow-x: auto; padding: 1rem; background: var(--rule); border-radius: 6
 .prose ol.flow li:not(:last-child)::after {
   content: ""; position: absolute; left: 0.83rem; top: 2rem; bottom: 0.1rem; width: 2px; background: var(--rule);
 }
+
+/* Architecture diagrams (project pages). Blue = AI, red = checks, teal = data. */
+.arch { margin: 2rem 0; padding: 0; width: 100%; }
+.arch .node {
+  --c: var(--ink);
+  border: 2px solid var(--c); border-radius: 6px; padding: 0.75rem 0.9rem; background: var(--bg); min-width: 0;
+}
+.arch .node.ai, .arch .node.rules { --c: var(--loss); }
+.arch .node.guard { --c: var(--gain); }
+.arch .node.data { --c: var(--neutral); }
+.arch .node.answer { --c: var(--ink); }
+.arch .node h4 { font-family: var(--head-font); font-size: 1rem; margin: 0 0 0.3rem; color: var(--c); }
+.arch .node p { font-size: 0.9rem; line-height: 1.5; margin: 0 0 0.5rem; max-width: none; }
+.arch .node p:last-child { margin-bottom: 0; }
+.arch-stage { display: grid; gap: 0.75rem; grid-template-columns: 1fr; }
+@media (min-width: 40rem) {
+  .arch-stage.split { grid-template-columns: 1fr 1.5fr; }
+  .arch-stage.three { grid-template-columns: repeat(3, 1fr); }
+  .arch-stage.four { grid-template-columns: repeat(4, 1fr); }
+}
+.chips { display: grid; gap: 0.5rem; margin-top: 0.75rem; }
+.chip { border: 1px dashed var(--loss); border-radius: 4px; padding: 0.4rem 0.6rem; margin: 0; background: var(--bg); }
+.arch-arrow { position: relative; height: 2.1rem; text-align: center; }
+.arch-arrow::before { content: ""; position: absolute; left: 50%; top: 0; bottom: 6px; width: 2px; margin-left: -1px; background: var(--muted); }
+.arch-arrow::after {
+  content: ""; position: absolute; left: 50%; bottom: 0; margin-left: -6px;
+  border: 6px solid transparent; border-top: 8px solid var(--muted); border-bottom: 0;
+}
+.arch-arrow span { position: absolute; left: calc(50% + 0.7rem); top: 50%; transform: translateY(-50%); font-size: 0.8rem; color: var(--muted); text-align: left; }
+.arch figcaption { margin-top: 1rem; font-size: 0.85rem; color: var(--muted); }
+.arch.intake .arch-stage.four .node { position: relative; }
+@media (min-width: 40rem) {
+  .arch.intake .arch-stage.four .node:not(:last-child)::after {
+    content: ""; position: absolute; right: -0.75rem; top: 50%; margin-top: -6px; width: 0.75rem; height: 12px;
+    background: linear-gradient(var(--muted), var(--muted)) center / 100% 2px no-repeat;
+  }
+}
+@media (max-width: 39.99rem) {
+  .arch.intake .arch-stage.four .node:not(:last-child)::after {
+    content: ""; position: absolute; left: 50%; bottom: -0.75rem; width: 2px; height: 0.75rem; margin-left: -1px; background: var(--muted);
+  }
+}

@@ -1,0 +1,123 @@
+---
+layout: default
+title: A lab research assistant for a cancer genomics cohort
+description: A web app that lets researchers ask a cancer genomics cohort questions in plain English. Numbers come from reviewed database queries, every answer shows its source, and an offline model handles routine questions.
+permalink: /projects/lab-assistant/
+---
+<article class="post wrap">
+  <header class="post-head">
+    <p class="post-date">Project</p>
+    <h1>A lab research assistant for a cancer genomics cohort</h1>
+    <p class="post-lede">A secure web app where researchers ask questions about samples, sequencing runs, mutations, structural variants and project documentation in plain English. Each answer comes with its source: the reviewed database query behind the numbers, or the document passage it quotes.</p>
+  </header>
+
+  <div class="prose">
+    <h2>The problem</h2>
+    <p>A genomics project spreads its knowledge across many places: sample sheets, hundreds of analysis output files from several variant-calling tools, wiki pages and design notes. A simple question such as "which tumors have a mutation in this gene?" or "was this tool run on every sample?" usually means asking a bioinformatician, who writes a one-off script. The researchers who know the biology are rarely the ones who can query the data.</p>
+    <p>This app puts those answers behind one search box. It keeps numbers trustworthy by never letting an AI model make them up: every figure comes from a tested database query.</p>
+
+    <h2>How it is built</h2>
+  </div>
+
+  <figure class="arch" aria-labelledby="arch-cap">
+    <div class="arch-stage">
+      <div class="node user">
+        <h4>Researcher</h4>
+        <p>Signs in with institutional single sign-on. Browses variants, structural variants and the sample registry, or asks a question in the Ask tab.</p>
+      </div>
+    </div>
+    <div class="arch-arrow"><span>question</span></div>
+
+    <div class="arch-stage split">
+      <div class="node rules">
+        <h4>1. Rules first, no AI</h4>
+        <p>Common patterns (a gene, a sample, a count, a run status) are recognized by fixed rules and answered directly by a reviewed query.</p>
+      </div>
+      <div class="node ai">
+        <h4>2. AI agent for everything else</h4>
+        <p>The model picks from a short list of tools (describe the data, resolve names, query variants, query structural variants, query the registry, search documents) and fills in the values. The app validates each value, runs a fixed query and returns a capped result. After a few rounds the model writes a short answer that cites each result.</p>
+        <div class="chips">
+          <p class="chip"><strong>Hosted model</strong> through an approved gateway, under a data-protection agreement</p>
+          <p class="chip"><strong>Offline open-weights model</strong> on the institution's own GPU. It handles easy, routine questions and takes over if the hosted model is unavailable.</p>
+        </div>
+      </div>
+    </div>
+    <div class="arch-arrow"><span>reviewed, read-only queries</span></div>
+
+    <div class="arch-stage">
+      <div class="node guard">
+        <h4>Checks on every query</h4>
+        <p>Read-only database connections. Values validated against the real data. At most a few hundred rows sent to a model. The model never writes free-form SQL.</p>
+      </div>
+    </div>
+    <div class="arch-arrow"><span></span></div>
+
+    <div class="arch-stage three">
+      <div class="node data">
+        <h4>Registry</h4>
+        <p>PostgreSQL, metadata only: patients, samples, assays, tumor and normal pairs, analysis runs, and where each result file lives.</p>
+      </div>
+      <div class="node data">
+        <h4>Variant tables</h4>
+        <p>Small variants with annotations, and structural variants from three callers plus their consensus. Parquet files queried with DuckDB.</p>
+      </div>
+      <div class="node data">
+        <h4>Document index</h4>
+        <p>Project documents, design decisions and an approved list of wiki pages, split into passages and searched with PostgreSQL full-text search.</p>
+      </div>
+    </div>
+    <div class="arch-arrow"><span>results</span></div>
+
+    <div class="arch-stage">
+      <div class="node answer">
+        <h4>Answer with its source</h4>
+        <p>Every full table and the exact query behind it, or the quoted passage. Numbers in AI-written text are checked against the results, and any that do not match are flagged. An audit log records the questions and tools used, never the data rows.</p>
+      </div>
+    </div>
+
+    <figcaption id="arch-cap">Architecture of the lab research assistant, from a question to a sourced answer. Blue is AI, red is checks, teal is data.</figcaption>
+  </figure>
+
+  <div class="prose">
+    <h2>Where the data comes from</h2>
+    <p>All data comes from the project's shared research storage. A sync tool compares the storage with the database and does everything in a fixed order.</p>
+  </div>
+
+  <figure class="arch intake" aria-labelledby="intake-cap">
+    <div class="arch-stage four">
+      <div class="node data"><h4>Shared storage</h4><p>Sample sheets and results from each analysis tool.</p></div>
+      <div class="node data"><h4>Dry run</h4><p>The sync tool plans its changes. A person reviews them and approves by a short fingerprint.</p></div>
+      <div class="node data"><h4>Staging, then curated tables</h4><p>Each source file is copied in, mapped, and checked for consistency. Every row records the version of the file it came from.</p></div>
+      <div class="node data"><h4>Variant tables</h4><p>Rebuilt from caller output and annotations by tested scripts that refuse to write if a check fails.</p></div>
+    </div>
+    <figcaption id="intake-cap">How project data reaches the database. Nothing is written until a person approves the plan.</figcaption>
+  </figure>
+
+  <div class="prose">
+    <h2>Example questions</h2>
+    <p>These are made up for illustration.</p>
+    <ul>
+      <li>"How many tumor samples have a truncating mutation in GENE-X, broken down by metastatic site?"</li>
+      <li>"Which samples have structural variants larger than 1 kb that all three callers agree on, and which of those are shared by every tumor from the same patient?"</li>
+      <li>"Why was copy number tool Y not loaded, and on how many samples has it been run?"</li>
+    </ul>
+
+    <h2>Why it is useful in a clinical research setting</h2>
+    <ul>
+      <li><strong>Self-service answers.</strong> Biologists and clinicians who do not code can explore the cohort directly, and every answer shows where it came from, so it can be checked.</li>
+      <li><strong>Consistency.</strong> The browse tabs, the rules and the AI agent all use the same reviewed queries, so the same question gives the same numbers.</li>
+      <li><strong>Provenance.</strong> Every database row traces back to a specific version of a source file.</li>
+      <li><strong>Sensible use of models.</strong> A capable hosted model handles open-ended questions, while an offline model on the institution's own hardware covers routine ones and keeps working if the hosted model is down.</li>
+      <li><strong>Validated.</strong> The app's structural variant summaries (variants found in every tumor of a patient, in some, or in one) matched the lab's own independently produced summary tables exactly, for every sample and patient. An automated test suite runs on every change.</li>
+    </ul>
+
+    <h2>Status</h2>
+    <p>The assistant is used inside the lab, by lab researchers, on a cohort of more than 250 patients and within the clinical research protocol. It currently covers small variants, structural variants, the sample registry, document search, and a choice of models.</p>
+    <p>Next, we are exploring more projects with per-project access control, saved conversations, indexing of analysis pipeline code, and a tightly guarded and clearly labeled fallback for free-form queries.</p>
+
+    <p class="prose-note">This page describes the design. It contains no patient data, sample identifiers or internal names.</p>
+  </div>
+  <footer class="post-foot">
+    <p><a href="{{ '/' | relative_url }}#projects">All projects</a></p>
+  </footer>
+</article>
