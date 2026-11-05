@@ -26,7 +26,7 @@ layout: default
   <div class="prose">
     {% for para in p.bio %}<p>{{ para }}</p>{% endfor %}
     <p class="links">
-      {% if p.links.cv != "" %}<a href="{{ p.links.cv }}">CV</a>{% endif %}
+      <a href="{{ '/cv/' | relative_url }}">CV</a>
       {% if p.links.github != "" %}<a href="{{ p.links.github }}" rel="me">GitHub</a>{% endif %}
       {% if p.links.scholar != "" %}<a href="{{ p.links.scholar }}" rel="me">Google Scholar</a>{% endif %}
       {% if p.links.linkedin != "" %}<a href="{{ p.links.linkedin }}" rel="me">LinkedIn</a>{% endif %}
@@ -146,6 +146,7 @@ layout: default
 
 <section id="experience" class="block wrap">
   <h2>Experience and education</h2>
+  <p class="prose-note">The full version is on the <a href="{{ '/cv/' | relative_url }}">CV page</a>.</p>
   <ul class="rows compact">
     {% for e in site.data.experience %}
     <li class="row">

@@ -209,3 +209,21 @@ pre { overflow-x: auto; padding: 1rem; background: var(--rule); border-radius: 6
   .about .portrait { grid-column: 2; grid-row: 1; width: 100%; }
   .about .prose { grid-column: 1; grid-row: 1; }
 }
+
+/* CV page */
+a.btn { display: inline-block; text-decoration: none; margin-right: 1.25rem; }
+.cv { padding: 2rem 0 3rem; }
+.cv-head .page-title { margin-bottom: 0.25rem; }
+.cv-role { color: var(--muted); margin: 0 0 0.75rem; font-family: var(--head-font); }
+.cv-sec { padding: 1.5rem 0 0; margin-top: 1.5rem; border-top: 1px solid var(--rule); }
+.cv-sec > h2 { font-size: 1.35rem; }
+.cv-job { margin-bottom: 2rem; }
+.cv-job-head { display: flex; justify-content: space-between; align-items: baseline; gap: 0.5rem 1.5rem; flex-wrap: wrap; }
+.cv-job-head h3 { margin: 0; }
+.cv-dates { color: var(--muted); font-size: 0.9rem; margin: 0; }
+.cv-org { margin: 0 0 0.6rem; color: var(--muted); }
+.cv-group { font-family: var(--head-font); font-size: 0.98rem; margin: 1.1rem 0 0.35rem; }
+.cv ul { max-width: var(--measure); padding-left: 1.3rem; margin: 0 0 0.5rem; }
+.cv li { margin-bottom: 0.45rem; }
+.cv li ul { margin-top: 0.35rem; }
+@media print { .cv-head .links { display: none; } }

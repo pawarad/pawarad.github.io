@@ -1,0 +1,102 @@
+# Source for the CV page (/cv/) and the PDF (assets/Aditya_Pawar.pdf).
+# After editing, rebuild the PDF: python3 tools/build_cv_pdf.py
+summary: Data scientist and ML/AI platform engineer with 8+ years building data platforms, pipelines and, more recently, agentic AI for translational scientists. At Fred Hutch I architected and own a multi-cohort translational AI platform that unifies metastatic prostate WGS, longitudinal ctDNA under 177Lu-PSMA radioligand therapy, and multi-omics bladder cancer data under one provenance-tracked data model, with grounded agents that answer only through validated queries. Technical lead on DRAGNX, a pan-cancer generative model (manuscript in revision). Deep expertise in cfDNA/ctDNA, liquid biopsy, WGS/WES and transcriptomics. I build every component with tests, versioning, audit trails and documentation so the owning team can run it. Mentored interns.
+skills:
+- group: Agentic AI and LLM systems
+  items: tool-calling agents (JSON-Schema-typed tools), retrieval and grounding, number-verification guardrails, multi-model routing across frontier and local open-weights models, prompt caching, evaluation harnesses, audit and usage telemetry, sub-agents, MCP integrations, multimodal vision-language agents, LLM fine-tuning and inference
+- group: Data platforms and governance
+  items: PostgreSQL schema and entity modeling, data versioning and lineage, staging-to-curated ETL with independent consistency checks, Parquet/DuckDB, Databricks, metadata harmonization, access control (institutional SSO)
+- group: Deployment and engineering
+  items: Docker, Apptainer, AWS (S3, Batch, EC2, Lambda, SageMaker), Kubernetes, Terraform, GitHub Actions CI/CD, Nextflow DSL2, Snakemake, SLURM/HPC, MLflow, REST APIs, Streamlit, Flask
+- group: Translational genomics
+  items: cfDNA/ctDNA, liquid biopsy, WGS/WES, EM-seq methylation, RNA-seq, single-cell, SNV/SV callers, copy number (TITAN, ichorCNA), ANNOVAR, ACMG germline annotation, NVIDIA Parabricks
+- group: Machine learning
+  items: PyTorch, TensorFlow, Hugging Face, autoencoders, GNNs, CNNs/Transformers, XGBoost, survival models, CUDA, multi-GPU and mixed-precision training
+- group: Languages
+  items: Python, SQL, R, Bash, Java
+experience:
+- role: Data Scientist, ML and AI Platform Engineering
+  org: Fred Hutchinson Cancer Center, Gavin Ha Lab
+  place: Seattle, WA
+  dates: June 2025 to present
+  groups:
+  - heading: Translational AI platform (architect and owner)
+    bullets:
+    - text: 'Built and own a multi-cohort translational AI platform for the Ha Lab and collaborating labs, designed for both computational and wet-lab scientists. It unifies three cancer programs:'
+      sub:
+      - a metastatic prostate rapid-autopsy WGS cohort
+      - a longitudinal ctDNA cohort of mCRPC patients sampled before, during and after 177Lu-PSMA-617 (Pluvicto) radioligand therapy
+      - a multi-omics metastatic bladder cancer cohort (WGS/WES, bulk RNA-seq, cfDNA)
+    - text: 'Common data model and biomarker ontology: a PostgreSQL registry modeling subjects, cohorts, treatment timepoints, specimens (tissue, autopsy, plasma), assays, tumor-normal pairs, analysis runs and results, with controlled vocabularies for biomarker definitions such as ctDNA tumor fraction, clonal status (founder, shared, private) and caller consensus.'
+    - text: 'Versioned biomarker data products: SNV, SV, copy-number, ctDNA tumor-fraction and expression data are released as validated Parquet/DuckDB builds. Queries over large variant tables return in under a second, and outputs reproduce the lab''s reference results exactly. Extending to single-cell RNA-seq.'
+    - text: 'Grounded ctDNA and genomics agents: deterministic rules answer common questions first, and an LLM agent answers the rest only through schema-validated tools.'
+    - text: 'Compliant multi-model gateway and telemetry: agents run through an approved, contract-covered model gateway, with model choice per question (fast or strong) and switching mid-conversation, plus a self-hosted open-weights model on an on-premises GPU as the fallback. An audit log records each question''s tools and tokens, and prompt caching is enabled.'
+  - heading: Machine learning and agentic curation
+    bullets:
+    - text: 'Technical lead, DRAGNX: built a pan-cancer generative model trained on a large corpus of RNA-seq samples (autoencoders), with a connector that maps cfDNA and tumor EM-seq methylation to gene expression, using multi-GPU mixed-precision training on NVIDIA L40 GPUs. Manuscript in revision.'
+    - text: 'Agentic curation: built a multimodal (text and image) agent that curates TITAN copy-number outputs, reducing manual review from 40 hours to 15 minutes per batch, and extended it into a dual-model design (two frontier models) scored against one shared curation skill and benchmarked against TITAN''s own optimal solution.'
+  - heading: Pipelines, GPU acceleration and clinical genomics
+    bullets:
+    - text: 'Shared pipelines: converted the lab''s genomics workflows into containerized Nextflow DSL2 pipelines on SLURM HPC and AWS, with GPU (L40S) execution using NVIDIA Parabricks, cutting runtime from 1 week to 12 hours (14x).'
+    - text: 'Algorithms: added GPU-accelerated joint multi-sample calling to ichorCNA (1k+ citations) and new features to TITAN (400+ citations), collaborating toward inclusion of both in Parabricks.'
+    - text: 'Clinical genomics: led genomic analysis across all cohorts of the longitudinal Pluvicto ctDNA study (SNVs, SVs, haplotypes, comut plots), supporting an AACR 2026 abstract and the manuscript revisions.'
+- role: Senior Data Science Consultant
+  org: The James Cancer Center, Ohio State University
+  place: Columbus, OH
+  dates: March 2024 to May 2025
+  groups:
+  - heading: ''
+    bullets:
+    - text: Built an elastic-net Cox proportional hazards model to identify gemcitabine-resistance genes, and processed genomic data on AWS with WES/RNA-seq Nextflow pipelines on AWS Batch.
+    - text: Applied scGPT to study cellular perturbations (92% accuracy on unseen cell populations) and characterized patient-derived xenograft models (copy number, SNVs, SVs).
+- role: Data Scientist II, Target Discovery Platform
+  org: NextRNA Therapeutics
+  place: Cambridge, MA
+  dates: January 2022 to September 2023
+  groups:
+  - heading: ''
+    bullets:
+    - text: Helped build the startup's cloud bioinformatics infrastructure on Nextflow and MLOps (AWS SageMaker, MLflow, Docker, GitHub Actions CI/CD), cutting pipeline run time by 40%.
+    - text: Built CNN, Transformer and GNN models for RNA-protein interaction prediction from eCLIP data (87% AUC) and a CRISPR pooled-screen pipeline to nominate lncRNA targets.
+    - text: Built an RDKit and GNN screening system that reduced compound libraries by 60% while preserving diversity, and worked daily with protein, chemistry and biology teams.
+- role: Bioinformatics Software Engineer
+  org: Memorial Sloan Kettering Cancer Center
+  place: New York, NY
+  dates: January 2021 to January 2022
+  groups:
+  - heading: ''
+    bullets:
+    - text: Extended Pathoman, MSK's Python/Flask germline variant annotation tool (ACMG guidelines), built a daily database-update job from multiple external sources and improved classification (45% fewer false negatives).
+    - text: Analyzed a ~28,000-patient cohort (EHR and omics) in Databricks/Spark (40% faster processing) and ran WES/WGS pipelines on 4,000+ samples on HPC.
+- role: Machine Learning Engineer
+  org: Massachusetts Institute of Technology (MIT)
+  place: Cambridge, MA
+  dates: May 2020 to December 2020
+  groups:
+  - heading: ''
+    bullets:
+    - text: Built deep learning models for protein interaction and antibody-antigen binding (CNN-LSTM 85% ROC-AUC, dilated CNN with attention 87%), deployed on AWS SageMaker with MLflow, and cut training time from 72 to 8 hours.
+- role: Data Scientist Intern
+  org: PureTech Health
+  place: Boston, MA
+  dates: May 2019 to August 2019
+  groups:
+  - heading: ''
+    bullets:
+    - text: Built tools to process bulk RNA-seq and supported single-cell sequencing pipelines.
+- role: Data Scientist Co-op
+  org: Surface Oncology
+  place: Cambridge, MA
+  dates: June 2018 to December 2018
+  groups:
+  - heading: ''
+    bullets:
+    - text: Built Shiny applications for biomarker and target discovery and a single-cell sequencing pipeline on AWS.
+publications:
+- Adil, Hanratty, **Pawar**, et al. Decoding gene expression from cell-free DNA methylation profiles. Manuscript in revision.
+- Prostate cancer phenotypes determined from circulating tumor DNA associate with outcomes to 177Lu-PSMA-617 therapy. AACR Annual Meeting 2026, late-breaking abstract.
+- Patton, McDeed, Netzley, **Pawar**, et al. Gene expression inference from cell-free DNA using uncertainty-aware deep learning. bioRxiv preprint, 2026.
+education:
+- degree: Master of Science in Applied Mathematics
+  school: Northeastern University, Boston, MA
+  dates: 2017 to 2019

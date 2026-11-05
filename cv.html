@@ -1,0 +1,72 @@
+---
+layout: default
+title: CV
+description: Curriculum vitae of Aditya Pawar. Data scientist in cancer genomics, agentic AI and ML platform engineering.
+permalink: /cv/
+---
+{% assign cv = site.data.cv %}
+{% assign p = site.data.profile %}
+<article class="cv wrap">
+  <header class="cv-head">
+    <h1 class="page-title">{{ p.name }}</h1>
+    <p class="cv-role">{{ p.role }}, {{ p.org }}</p>
+    <p class="links">
+      <a class="btn" href="{{ '/assets/Aditya_Pawar.pdf' | relative_url }}" download>Download PDF</a>
+      {% if p.links.github != "" %}<a href="{{ p.links.github }}" rel="me">GitHub</a>{% endif %}
+      {% if p.links.linkedin != "" %}<a href="{{ p.links.linkedin }}" rel="me">LinkedIn</a>{% endif %}
+      {% if p.links.scholar != "" %}<a href="{{ p.links.scholar }}" rel="me">Google Scholar</a>{% endif %}
+    </p>
+  </header>
+
+  <section class="cv-sec">
+    <h2>Summary</h2>
+    <p>{{ cv.summary }}</p>
+  </section>
+
+  <section class="cv-sec">
+    <h2>Technical skills</h2>
+    <dl class="skills">
+      {% for g in cv.skills %}
+      <div class="skill"><dt>{{ g.group }}</dt><dd>{{ g.items }}</dd></div>
+      {% endfor %}
+    </dl>
+  </section>
+
+  <section class="cv-sec">
+    <h2>Professional experience</h2>
+    {% for j in cv.experience %}
+    <div class="cv-job">
+      <div class="cv-job-head">
+        <h3>{{ j.role }}</h3>
+        <p class="cv-dates">{{ j.dates }}</p>
+      </div>
+      <p class="cv-org">{{ j.org }}, {{ j.place }}</p>
+      {% for g in j.groups %}
+        {% if g.heading != "" %}<h4 class="cv-group">{{ g.heading }}</h4>{% endif %}
+        <ul>
+          {% for b in g.bullets %}
+          <li>{{ b.text }}
+            {% if b.sub %}<ul>{% for s in b.sub %}<li>{{ s }}</li>{% endfor %}</ul>{% endif %}
+          </li>
+          {% endfor %}
+        </ul>
+      {% endfor %}
+    </div>
+    {% endfor %}
+  </section>
+
+  <section class="cv-sec">
+    <h2>Selected publications</h2>
+    <ul>
+      {% for x in cv.publications %}<li>{{ x | markdownify | remove: '<p>' | remove: '</p>' }}</li>{% endfor %}
+    </ul>
+  </section>
+
+  <section class="cv-sec">
+    <h2>Education</h2>
+    {% for e in cv.education %}
+    <div class="cv-job-head"><h3>{{ e.degree }}</h3><p class="cv-dates">{{ e.dates }}</p></div>
+    <p class="cv-org">{{ e.school }}</p>
+    {% endfor %}
+  </section>
+</article>

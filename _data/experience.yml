@@ -4,7 +4,7 @@
   years: 2025 to present
   note: Production AI assistants and agents for cancer genomics, GPU pipelines and copy number algorithms.
 
-- role: Senior Bioinformatics Consultant
+- role: Senior Data Science Consultant
   place: James Cancer Center, Ohio State University
   years: 2024 to 2025
   note: Single-cell foundation model pipelines, methylation biomarker modeling and scalable Nextflow pipelines on AWS.
@@ -19,7 +19,7 @@
   years: 2021 to 2022
   note: Variant classification models and large-scale exome and genome processing on HPC.
 
-- role: Machine Learning Scientist
+- role: Machine Learning Engineer
   place: Massachusetts Institute of Technology
   years: 2020
   note: Deep learning for antibody-antigen binding prediction.

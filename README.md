@@ -23,6 +23,7 @@ The site is live a minute or two after each push.
 | A talk or poster | `_data/talks.yml` |
 | A news line | `_data/news.yml` |
 | Bio, tagline, links | `_data/profile.yml` |
+| The CV page and PDF | Edit `_data/cv.yml`, then run `python3 tools/build_cv_pdf.py` (needs Chrome) to rebuild `assets/Aditya_Pawar.pdf` |
 | Focus areas | `_data/areas.yml` |
 
 Images for posts go in `assets/img/` and are referenced as `![alt text]({{ '/assets/img/name.png' | relative_url }})`.
