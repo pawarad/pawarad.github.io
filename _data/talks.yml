@@ -1,5 +1,7 @@
-# Talks and posters, newest first.
-- title: Pluvicto ctDNA phenotyping
-  venue: AACR Annual Meeting
-  year: 2026
-  links: []
+# Talks and posters, newest first. Leave empty to hide the section.
+# Example:
+# - title: Talk title
+#   venue: Meeting or seminar
+#   year: 2026
+#   links: []
+[]

@@ -1,4 +1,4 @@
-# Papers and preprints, newest first. Example entry:
+# Papers, preprints and abstracts, newest first. Example entry:
 #
 # - title: Paper title
 #   authors: "A. Pawar, B. Coauthor, G. Ha"   # wrap your own name in ** ** to bold it; leave "" to hide
@@ -9,9 +9,22 @@
 #     - {label: Preprint, url: https://...}
 #     - {label: Code, url: https://...}
 
-- title: Preprint (DOI 10.64898/2026.02.10.705188)
+- title: Prostate cancer phenotypes determined from circulating tumor DNA associate with outcomes to 177Lu-PSMA-617 therapy
   authors: ""
-  venue: Preprint
+  venue: AACR Annual Meeting, late-breaking abstract
   year: 2026
   links:
-    - {label: Preprint, url: "https://doi.org/10.64898/2026.02.10.705188"}
+    - {label: Google Scholar, url: "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=99TMfs0AAAAJ&citation_for_view=99TMfs0AAAAJ:u5HHmVD_uO8C"}
+
+- title: Gene expression inference from cell-free DNA using uncertainty-aware deep learning
+  authors: "Robert D. Patton, A. Patrick McDeed, Alexander Netzley, **Aditya Pawar**, Thomas W. Persse, Akira Nair, Patricia C. Galipeau, Ilsa M. Coleman, Pushpa Itagi, Pooja Chandra, Erolcan Sayar, Mohamed Adil, Manasvita Vashisth, Joseph B. Hiatt, Ruth Dumpit, Lori Kollath, Ridvan Arda Demirci, Alireza Ghodsi, Hung-Ming Lam, Colm Morrissey, Delphine L. Chen, Michael T. Schweizer, Amir Iravani, Andrew C. Hsieh, David MacPherson, Michael C. Haffner, Peter S. Nelson, Gavin Ha"
+  venue: bioRxiv preprint
+  year: 2026
+  links:
+    - {label: Preprint, url: "https://www.biorxiv.org/content/10.64898/2026.02.10.705188v2"}
+
+- title: Decoding gene expression from cell-free DNA methylation profiles
+  authors: ""
+  venue: Manuscript in revision
+  year: 2026
+  links: []

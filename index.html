@@ -21,6 +21,8 @@ layout: default
 
 <section id="about" class="block wrap">
   <h2>About</h2>
+  <div class="about">
+  {% if p.photo %}<img class="portrait" src="{{ p.photo | relative_url }}" alt="{{ p.photo_alt }}" width="440" height="550" loading="eager">{% endif %}
   <div class="prose">
     {% for para in p.bio %}<p>{{ para }}</p>{% endfor %}
     <p class="links">
@@ -31,6 +33,7 @@ layout: default
       {% if p.links.x != "" %}<a href="{{ p.links.x }}" rel="me">X</a>{% endif %}
       {% if p.links.email != "" %}<a href="mailto:{{ p.links.email }}">Email</a>{% endif %}
     </p>
+  </div>
   </div>
 </section>
 
@@ -75,7 +78,7 @@ layout: default
 </section>
 
 <section id="publications" class="block wrap">
-  <h2>Publications and talks</h2>
+  <h2>Publications</h2>
   {% if site.data.publications.size > 0 %}
   <ul class="rows">
     {% for pub in site.data.publications %}

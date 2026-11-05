@@ -200,3 +200,12 @@ pre { overflow-x: auto; padding: 1rem; background: var(--rule); border-radius: 6
 .skill dt { font-family: var(--head-font); font-weight: 700; font-size: 1rem; }
 .skill dd { margin: 0; color: var(--muted); font-size: 0.97rem; }
 @media (min-width: 46rem) { .skill { grid-template-columns: 14rem 1fr; } }
+
+/* About with portrait */
+.about { display: grid; gap: 1.5rem 2.5rem; align-items: start; }
+.portrait { width: min(100%, 15rem); height: auto; border-radius: 6px; border: 1px solid var(--rule); }
+@media (min-width: 46rem) {
+  .about { grid-template-columns: 1fr 14rem; }
+  .about .portrait { grid-column: 2; grid-row: 1; width: 100%; }
+  .about .prose { grid-column: 1; grid-row: 1; }
+}

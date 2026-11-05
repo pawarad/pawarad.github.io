@@ -3,6 +3,8 @@ role: Data Scientist
 org: Gavin Ha Lab, Fred Hutchinson Cancer Center
 org_url: https://gavinhalab.github.io/
 location: Boston area
+photo: /assets/img/aditya.jpg
+photo_alt: Aditya Pawar sitting on a rock in an alpine meadow, with a snow-covered mountain behind
 
 tagline: I build production-grade agentic AI for cancer genomics, on top of the algorithms and GPU pipelines that feed it.
 

@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Don't give your AI agent the keys to the database"
+title: "Vectorless knowledge base Agentic system for clinical genomics"
 date: 2026-11-05 09:00:00 -0500
 description: How we built an AI assistant that answers clinical-genomics questions from governed data, quickly and safely, and what a biotech team can reuse.
 tags: [ai, agents, data-platforms, genomics, ctdna]
