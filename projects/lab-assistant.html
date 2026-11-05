@@ -23,7 +23,7 @@ permalink: /projects/lab-assistant/
     <div class="arch-stage">
       <div class="node user">
         <h4>Researcher</h4>
-        <p>Signs in with institutional single sign-on. Browses variants, structural variants and the sample registry, or asks a question in the Ask tab.</p>
+        <p>Signs in with institutional SSO. Browses or asks.</p>
       </div>
     </div>
     <div class="arch-arrow"><span>question</span></div>
@@ -31,51 +31,59 @@ permalink: /projects/lab-assistant/
     <div class="arch-stage split">
       <div class="node rules">
         <h4>1. Rules first, no AI</h4>
-        <p>Common patterns (a gene, a sample, a count, a run status) are recognized by fixed rules and answered directly by a reviewed query.</p>
+        <p>Reviewed templates. Instant and deterministic.</p>
       </div>
       <div class="node ai">
         <h4>2. AI agent for everything else</h4>
-        <p>The model picks from a short list of tools (describe the data, resolve names, query variants, query structural variants, query the registry, search documents) and fills in the values. The app validates each value, runs a fixed query and returns a capped result. After a few rounds the model writes a short answer that cites each result.</p>
+        <p>The model picks from a short list of reviewed tools and fills in the values. The app validates each value, runs a fixed query and returns a capped result. After a few rounds the model writes a short answer that cites each result.</p>
         <div class="chips">
-          <p class="chip"><strong>Hosted model</strong> through an approved gateway, under a data-protection agreement</p>
-          <p class="chip"><strong>Offline open-weights model</strong> on the institution's own GPU. It handles easy, routine questions and takes over if the hosted model is unavailable.</p>
+          <p class="chip"><strong>Frontier model</strong> (approved gateway; fast or strong, switchable mid-conversation)</p>
+          <p class="chip"><strong>Local open-weights model</strong> (in-house GPU, fallback)</p>
         </div>
       </div>
     </div>
-    <div class="arch-arrow"><span>reviewed, read-only queries</span></div>
+    <div class="arch-arrow"><span>only reviewed, read-only tools</span></div>
 
     <div class="arch-stage">
       <div class="node guard">
         <h4>Checks on every query</h4>
-        <p>Read-only database connections. Values validated against the real data. At most a few hundred rows sent to a model. The model never writes free-form SQL.</p>
+        <p>Schema-validated inputs, read-only connections, row limits, no free-form SQL, no web access.</p>
       </div>
     </div>
     <div class="arch-arrow"><span></span></div>
 
     <div class="arch-stage three">
       <div class="node data">
-        <h4>Registry</h4>
-        <p>PostgreSQL, metadata only: patients, samples, assays, tumor and normal pairs, analysis runs, and where each result file lives.</p>
+        <h4>Study registry</h4>
+        <p>Subject, study, timepoint, specimen, assay and result, with source checksums.</p>
       </div>
       <div class="node data">
-        <h4>Variant tables</h4>
-        <p>Small variants with annotations, and structural variants from three callers plus their consensus. Parquet files queried with DuckDB.</p>
+        <h4>Versioned variant and biomarker tables</h4>
+        <p>Columnar files, in-process SQL, rollback.</p>
       </div>
       <div class="node data">
         <h4>Document index</h4>
-        <p>Project documents, design decisions and an approved list of wiki pages, split into passages and searched with PostgreSQL full-text search.</p>
+        <p>Protocols, decisions, SOPs.</p>
       </div>
     </div>
     <div class="arch-arrow"><span>results</span></div>
 
     <div class="arch-stage">
+      <div class="node guard">
+        <h4>Answer check</h4>
+        <p>Every number is matched to its source.</p>
+      </div>
+    </div>
+    <div class="arch-arrow"><span></span></div>
+
+    <div class="arch-stage">
       <div class="node answer">
         <h4>Answer with its source</h4>
-        <p>Every full table and the exact query behind it, or the quoted passage. Numbers in AI-written text are checked against the results, and any that do not match are flagged. An audit log records the questions and tools used, never the data rows.</p>
+        <p>Query shown, audit logged with tokens and cost.</p>
       </div>
     </div>
 
-    <figcaption id="arch-cap">Architecture of the lab research assistant, from a question to a sourced answer. Blue is AI, red is checks, teal is data.</figcaption>
+    <figcaption id="arch-cap">Architecture of the lab research assistant, from a question to a checked, sourced answer. Blue is AI, red is checks, teal is data.</figcaption>
   </figure>
 
   <div class="prose">
@@ -85,12 +93,12 @@ permalink: /projects/lab-assistant/
 
   <figure class="arch intake" aria-labelledby="intake-cap">
     <div class="arch-stage four">
-      <div class="node data"><h4>Shared storage</h4><p>Sample sheets and results from each analysis tool.</p></div>
-      <div class="node data"><h4>Dry run</h4><p>The sync tool plans its changes. A person reviews them and approves by a short fingerprint.</p></div>
-      <div class="node data"><h4>Staging, then curated tables</h4><p>Each source file is copied in, mapped, and checked for consistency. Every row records the version of the file it came from.</p></div>
-      <div class="node data"><h4>Variant tables</h4><p>Rebuilt from caller output and annotations by tested scripts that refuse to write if a check fails.</p></div>
+      <div class="node data"><h4>Shared storage</h4><p>Pipeline outputs from each analysis tool.</p></div>
+      <div class="node data"><h4>Dry-run plan and cross-checks</h4><p>The sync tool writes a plan, and independent queries cross-check it.</p></div>
+      <div class="node data"><h4>Person approves</h4><p>Nothing is written until a person approves the exact plan.</p></div>
+      <div class="node data"><h4>Curated tables and versioned builds</h4><p>Every row records its source file and checksum. Builds are checked and never edited in place.</p></div>
     </div>
-    <figcaption id="intake-cap">How project data reaches the database. Nothing is written until a person approves the plan.</figcaption>
+    <figcaption id="intake-cap">How project data reaches the database. Nothing is written until a person approves the exact plan.</figcaption>
   </figure>
 
   <div class="prose">
@@ -116,6 +124,7 @@ permalink: /projects/lab-assistant/
     <p>Next, we are exploring more projects with per-project access control, saved conversations, indexing of analysis pipeline code, and a tightly guarded and clearly labeled fallback for free-form queries.</p>
 
     <p class="prose-note">This page describes the design. It contains no patient data, sample identifiers or internal names.</p>
+    <p>Read more: <a href="{{ '/blog/rules-first-models-second-checks-always/' | relative_url }}">Rules first, models second, checks always</a></p>
   </div>
   <footer class="post-foot">
     <p><a href="{{ '/' | relative_url }}#projects">All projects</a></p>
