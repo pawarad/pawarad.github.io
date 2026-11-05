@@ -1,5 +1,5 @@
 - title: Production agentic systems
-  text: Agents and assistants that people use to find things in cancer genomics data. A web assistant answers questions about a patient cohort in plain English, with every number coming from a reviewed query and every answer showing its source. A vision-language agent curates copy number solutions in minutes instead of hours.
+  text: Agents and assistants built to find things in cancer genomics data, with every answer traceable. A web assistant answers questions about a patient cohort in plain English, with every number coming from a reviewed query and every answer showing its source. A vision-language agent curates copy number solutions in minutes instead of hours.
 
 - title: GPU bioinformatics
   text: Bringing the lab's pipelines into Nextflow so they run the same way every time, and building new ones for L40S GPUs with Parabricks. On the modeling side, the biggest GPU win is rarely a faster single run. It is running dozens of starting points in parallel so the model stops getting stuck in poor solutions.

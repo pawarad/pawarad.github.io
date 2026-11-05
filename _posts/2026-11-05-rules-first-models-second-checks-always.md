@@ -1,15 +1,15 @@
 ---
 layout: post
-title: "Rules first, models second, checks always"
+title: "Don't give your AI agent the keys to the database"
 date: 2026-11-05 09:00:00 -0500
 description: How we built an AI assistant that answers clinical-genomics questions from governed data, quickly and safely, and what a biotech team can reuse.
-tags: [ai, data-platforms, genomics, ctdna]
+tags: [ai, agents, data-platforms, genomics, ctdna]
 ---
 
 A translational question sounds simple: *which patients have matched tumor and normal sequencing, structural-variant calls from more than one caller, and plasma drawn before and after treatment?* In most labs, answering it takes a day of messages, spreadsheets and one-off scripts.
 The answer then lives in someone's notebook and can't be checked or repeated.
 
-Over the past year I built an assistant that answers questions like this in seconds, with the query that produced each number shown underneath. Researchers across several collaborating groups, both computational and wet-lab, now use it every day. This post covers the architecture and
+Over the past year I built an assistant that answers questions like this in seconds, with the query that produced each number shown underneath. This post covers the architecture and
 the decisions that made it safe enough to trust. A team in biotech or an academic lab could reuse most of it.
 
 ## The one principle: the model never touches the data
@@ -46,7 +46,7 @@ flowchart TD
 
 The most useful thing we built isn't AI at all. It's a small relational registry that models the research the way scientists think about it: subject → study → treatment timepoint → specimen (tissue, autopsy, plasma) → assay → tumor–normal pair → analysis run → result. Every row
 records which source file it came from and that file's checksum. Without this layer, an AI assistant can only guess. With it, most questions become lookups.
-Large results, such as millions of variant calls across callers, are compiled into versioned columnar files and queried in-process. Filters over tens of millions of rows return in under a second. Each build has a manifest of its inputs, is checked against the lab's reference results,
+Large results, such as variant calls from several callers, are compiled into versioned columnar files and queried in-process. Filters over these tables return in under a second. Each build has a manifest of its inputs, is checked against the lab's reference results,
 and is never edited in place. If a build is wrong, we point back to the previous one.
 
 ## 2. Rules first
@@ -67,7 +67,7 @@ written to an audit log with its tools, tokens and cost. Scientists trust a numb
 ## 5. Make model choice boring
 
 The model sits behind an approved, contract-covered gateway. Users pick a fast model or a stronger one for each question, and they can switch mid-conversation without losing context, because the app keeps the conversation history. A local open-weights model on our own GPU is the
-fallback. With prompt caching, a typical answer costs a fraction of a cent, and the stronger model is used only when it's needed.
+fallback. With prompt caching, answers stay cheap, and the stronger model is used only when it's needed.
 
 ## 6. People approve every write
 

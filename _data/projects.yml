@@ -4,7 +4,7 @@
 - title: Lab research assistant
   page: /projects/lab-assistant/
   area: Agentic systems
-  status: In use in the lab
+  status: In development
   summary: A web app where researchers ask questions of a cancer genomics cohort in plain English. Numbers come only from reviewed database queries, every answer shows its source, and an offline model on the institution's own GPU handles routine questions.
   links: []
 

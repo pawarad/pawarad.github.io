@@ -13,7 +13,7 @@ permalink: /projects/lab-assistant/
 
   <div class="prose">
     <h2>The problem</h2>
-    <p>A genomics project spreads its knowledge across many places: sample sheets, hundreds of analysis output files from several variant-calling tools, wiki pages and design notes. A simple question such as "which tumors have a mutation in this gene?" or "was this tool run on every sample?" usually means asking a bioinformatician, who writes a one-off script. The researchers who know the biology are rarely the ones who can query the data.</p>
+    <p>A genomics project spreads its knowledge across many places: sample sheets, many analysis output files from several variant-calling tools, wiki pages and design notes. A simple question such as "which tumors have a mutation in this gene?" or "was this tool run on every sample?" usually means asking a bioinformatician, who writes a one-off script. The researchers who know the biology are rarely the ones who can query the data.</p>
     <p>This app puts those answers behind one search box. It keeps numbers trustworthy by never letting an AI model make them up: every figure comes from a tested database query.</p>
 
     <h2>How it is built</h2>
@@ -106,7 +106,7 @@ permalink: /projects/lab-assistant/
     <p>These are made up for illustration.</p>
     <ul>
       <li>"How many tumor samples have a truncating mutation in GENE-X, broken down by metastatic site?"</li>
-      <li>"Which samples have structural variants larger than 1 kb that all three callers agree on, and which of those are shared by every tumor from the same patient?"</li>
+      <li>"Which samples have structural variants larger than 1 kb that every caller agrees on, and which of those are shared by every tumor from the same patient?"</li>
       <li>"Why was copy number tool Y not loaded, and on how many samples has it been run?"</li>
     </ul>
 
@@ -120,11 +120,11 @@ permalink: /projects/lab-assistant/
     </ul>
 
     <h2>Status</h2>
-    <p>The assistant is used inside the lab, by lab researchers, on a cohort of more than 250 patients and within the clinical research protocol. It currently covers small variants, structural variants, the sample registry, document search, and a choice of models.</p>
+    <p>The assistant is designed to run within the clinical research protocol, on data the lab governs. It currently covers small variants, structural variants, the sample registry, document search, and a choice of models.</p>
     <p>Next, we are exploring more projects with per-project access control, saved conversations, indexing of analysis pipeline code, and a tightly guarded and clearly labeled fallback for free-form queries.</p>
 
     <p class="prose-note">This page describes the design. It contains no patient data, sample identifiers or internal names.</p>
-    <p>Read more: <a href="{{ '/blog/rules-first-models-second-checks-always/' | relative_url }}">Rules first, models second, checks always</a></p>
+    <p>Read more: <a href="{{ '/blog/rules-first-models-second-checks-always/' | relative_url }}">Don't give your AI agent the keys to the database</a></p>
   </div>
   <footer class="post-foot">
     <p><a href="{{ '/' | relative_url }}#projects">All projects</a></p>
