@@ -7,9 +7,9 @@ location: Boston area
 tagline: I build production-grade agentic AI for cancer genomics, on top of the algorithms and GPU pipelines that feed it.
 
 bio:
-  - I am a data scientist at the Gavin Ha Lab at Fred Hutch. I build AI assistants and agents for cancer genomics that run on governed, real cohort data, along with the copy number algorithms and GPU pipelines underneath them. Most AI demos stop at the demo. My focus is the production end: systems that show their sources, check every number, and run inside clinical research protocols.
-  - I have more than eight years of experience across academia and industry, from protein machine learning at MIT to drug discovery at NextRNA Therapeutics, variant analysis at Memorial Sloan Kettering and cancer genomics at Fred Hutch. My master's in applied mathematics is from Northeastern University.
-  - The mix is deliberate. Applied mathematics lets me understand why a model behaves as it does, machine learning lets me build it, bioinformatics tells me what the data means, and engineering gets it running for real users. This site is where I write up the work.
+  - "I am a data scientist at the Gavin Ha Lab at Fred Hutch. I build AI assistants and agents for cancer genomics that run on governed, real cohort data, along with the copy number algorithms and GPU pipelines underneath them. Most AI demos stop at the demo. My focus is the production end: systems that show their sources, check every number, and run inside clinical research protocols."
+  - "I have more than eight years of experience across academia and industry, from protein machine learning at MIT to drug discovery at NextRNA Therapeutics, variant analysis at Memorial Sloan Kettering and cancer genomics at Fred Hutch. My master's in applied mathematics is from Northeastern University."
+  - "The mix is deliberate. Applied mathematics lets me understand why a model behaves as it does, machine learning lets me build it, bioinformatics tells me what the data means, and engineering gets it running for real users. This site is where I write up the work."
 
 # Leave a link empty to hide it.
 links:
